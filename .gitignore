@@ -5,3 +5,5 @@ ros2_ws/install
 Note.txt
 standalone_gz_sim_plugins/build
 standalone_gz_sim_plugins/move_model_system_plugin/build
+standalone_gz_sim_plugins/move_model_topicway_system_plugin/build
+standalone_gz_sim_plugins/print_entity_system_plugin/build

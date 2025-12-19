@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 
 <sdf version='1.9'>
-<world name='velocity_test_world'>
+<world name='move_model_topic_way'>
 
 <!-- Essential systems normally coming from server.config -->
 <!-- without these gz sim gui will be blank-->
@@ -17,12 +17,11 @@
         name="gz::sim::systems::SceneBroadcaster">
 </plugin>
 
-
 <plugin
-    filename="MoveModel"
-    name="gz::sim::systems::MoveModel">
+    filename="MoveModelTopicWay"
+    name="gz::sim::systems::MoveModelTopicWay">
   <model_name>TestCube</model_name>
-  <z_velocity>0.5</z_velocity>
+  <topic_name>cmd_vel_z</topic_name>
 </plugin>
 
 

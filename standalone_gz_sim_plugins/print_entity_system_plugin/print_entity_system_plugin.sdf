@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 
 <sdf version='1.9'>
-<world name='velocity_test_world'>
+<world name='print_world_1'>
 
 <!-- Essential systems normally coming from server.config -->
 <!-- without these gz sim gui will be blank-->
@@ -17,12 +17,12 @@
         name="gz::sim::systems::SceneBroadcaster">
 </plugin>
 
+<!-- custom plugin attach to world-->
 <plugin
-    filename="MoveModelTopicWay"
-    name="gz::sim::systems::MoveModelTopicWay">
-  <model_name>TestCube</model_name>
-  <topic_name>cmd_vel_z</topic_name>
+    filename="PrintEntitySystemPlugin"
+    name="gz::sim::systems::PrintEntitySystemPlugin">
 </plugin>
+
 
 
 <!-- Floor Plane -->
@@ -73,8 +73,13 @@
       <geometry><box><size>1 1 1</size></box></geometry>
     </collision>
   </link>
-  <!-- Make it dynamic (optional, but good practice if not using inertia) -->
   <allow_auto_disable>false</allow_auto_disable>
+
+  <!-- custom plugin attach to model-->
+  <!-- <plugin
+      filename="PrintEntitySystemPlugin"
+      name="gz::sim::systems::PrintEntitySystemPlugin">
+  </plugin> -->
 </model>
 
 
