@@ -2,10 +2,13 @@ GAZEBO SIM PLUGINS TUTORIAL
 --------------
 
 Gazebo Sim standalone system plugins and Gazebo Sim ROS 2 plugins.
-This repository accompanies a YouTube tutorial series on building Gazebo Sim plugins.
+This repository accompanies a YouTube tutorial series on Gazebo Sim plugins.
+
 
 YouTube Tutorial
 ----------------
+Gazebo Sim Plugin Made Easy !!!
+
 Video link: Coming soon
 
 
@@ -196,7 +199,7 @@ ROS 2 packages not found:
 
 ## Author / Maintainer
 Hrithik Verma <br>
-GitHub: https://github.com/Hrithik-verma <br>
-LinkdIn: https://www.linkedin.com/in/hrithik-verma-35a155193 <br>
-Youtube: https://www.youtube.com/@RoboticsWithHrithik <br>
+[GitHub](https://github.com/Hrithik-verma) <br>
+[LinkdIn](https://www.linkedin.com/in/hrithik-verma-35a155193) <br>
+[Youtube](https://www.youtube.com/@RoboticsWithHrithik) <br>
 
