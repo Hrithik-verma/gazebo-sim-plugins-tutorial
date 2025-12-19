@@ -1,0 +1,128 @@
+<?xml version='1.0'?>
+
+<sdf version='1.9'>
+<world name='velocity_test_world'>
+
+
+<!-- Essential systems normally coming from server.config -->
+<!-- without these gz sim gui will be blank-->
+<plugin filename="gz-sim-physics-system"
+        name="gz::sim::systems::Physics">
+</plugin>
+
+<plugin filename="gz-sim-user-commands-system"
+        name="gz::sim::systems::UserCommands">
+</plugin>
+
+<plugin filename="gz-sim-scene-broadcaster-system"
+        name="gz::sim::systems::SceneBroadcaster">
+</plugin>
+
+<plugin
+    filename="LightControl"
+    name="gz::sim::LightControl">
+</plugin>
+
+
+
+<!-- Floor Plane -->
+<model name="ground_plane">
+    <static>true</static>
+    <link name="link">
+    <collision name="collision">
+        <geometry>
+        <plane>
+            <normal>0 0 1</normal>
+            <size>100 100</size>
+        </plane>
+        </geometry>
+    </collision>
+    <visual name="visual">
+        <geometry>
+        <plane>
+            <normal>0 0 1</normal>
+            <size>100 100</size>
+        </plane>
+        </geometry>
+        <material>
+        <ambient>0.8 0.8 0.8 1</ambient>
+        <diffuse>0.8 0.8 0.8 1</diffuse>
+        <specular>0.8 0.8 0.8 1</specular>
+        </material>
+    </visual>
+    </link>
+</model>
+
+<!-- Model to apply velocity to -->
+<model name='TestCube'>
+  <pose>0 0 0.5 0 0 0</pose>
+  <link name='link'>
+    <inertial>
+      <mass>1.0</mass>
+      <inertia>
+        <ixx>0.166667</ixx>
+        <iyy>0.166667</iyy>
+        <izz>0.166667</izz>
+      </inertia>
+    </inertial>
+    <visual name='visual'>
+      <geometry><box><size>1 1 1</size></box></geometry>
+      <material><ambient>0.8 0.1 0.1 1</ambient></material>
+    </visual>
+    <collision name='collision'>
+      <geometry><box><size>1 1 1</size></box></geometry>
+    </collision>
+  </link>
+  <!-- Make it dynamic (optional, but good practice if not using inertia) -->
+  <allow_auto_disable>false</allow_auto_disable>
+</model>
+
+<scene>
+  <ambient>0.05 0.05 0.05 1</ambient>
+  <background>0 0 0 1</background>
+</scene>
+
+ <!-- lights-->
+ <light name='spotlight' type='spot'>
+    <pose>0 1.0 2 0 0 0</pose>
+    <cast_shadows>true</cast_shadows>
+    <intensity>1</intensity>
+    <direction>0 0 -1</direction>
+    <diffuse>0.5 0.5 0.5 1</diffuse>
+    <specular>0.5 0.5 0.5 1</specular>
+    <attenuation>
+    <range>4</range>
+    <linear>0.5</linear>
+    <constant>0.20000000298023224</constant>
+    <quadratic>0.0099999997764825821</quadratic>
+    </attenuation>
+    <spot>
+    <inner_angle>0.10000000149011612</inner_angle>
+    <outer_angle>0.5</outer_angle>
+    <falloff>0.80000001192092896</falloff>
+    </spot>
+</light>
+
+<light name='spotlight_0' type='spot'>
+    <pose>0 -1.0 2 0 0 0</pose>
+    <cast_shadows>true</cast_shadows>
+    <intensity>1</intensity>
+    <direction>0 0 -1</direction>
+    <diffuse>0.5 0.5 0.5 1</diffuse>
+    <specular>0.5 0.5 0.5 1</specular>
+    <attenuation>
+    <range>4</range>
+    <linear>0.5</linear>
+    <constant>0.20000000298023224</constant>
+    <quadratic>0.0099999997764825821</quadratic>
+    </attenuation>
+    <spot>
+    <inner_angle>0.10000000149011612</inner_angle>
+    <outer_angle>0.5</outer_angle>
+    <falloff>0.80000001192092896</falloff>
+    </spot>
+</light>
+
+
+</world>
+</sdf>

@@ -1,0 +1,5 @@
+- ros_topic_name: /cmd_vel_z
+  gz_topic_name: /cmd_vel_z
+  ros_type_name: std_msgs/msg/Float64
+  gz_type_name: gz.msgs.Double
+  direction: BIDIRECTIONAL

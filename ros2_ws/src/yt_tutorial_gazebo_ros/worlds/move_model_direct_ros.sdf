@@ -1,0 +1,84 @@
+<?xml version='1.0'?>
+
+<sdf version='1.9'>
+<world name='velocity_test_world'>
+
+
+<!-- Essential systems normally coming from server.config -->
+<!-- without these gz sim gui will be blank-->
+<plugin filename="gz-sim-physics-system"
+        name="gz::sim::systems::Physics">
+</plugin>
+
+<plugin filename="gz-sim-user-commands-system"
+        name="gz::sim::systems::UserCommands">
+</plugin>
+
+<plugin filename="gz-sim-scene-broadcaster-system"
+        name="gz::sim::systems::SceneBroadcaster">
+</plugin>
+
+<plugin
+    filename="MoveModelDirectRos"
+    name="gz::sim::systems::MoveModelDirectRos">
+  <model_name>TestCube</model_name>
+  <ros_topic_name>cmd_vel_z</ros_topic_name>
+</plugin>
+
+
+
+<!-- Floor Plane -->
+<model name="ground_plane">
+    <static>true</static>
+    <link name="link">
+    <collision name="collision">
+        <geometry>
+        <plane>
+            <normal>0 0 1</normal>
+            <size>100 100</size>
+        </plane>
+        </geometry>
+    </collision>
+    <visual name="visual">
+        <geometry>
+        <plane>
+            <normal>0 0 1</normal>
+            <size>100 100</size>
+        </plane>
+        </geometry>
+        <material>
+        <ambient>0.8 0.8 0.8 1</ambient>
+        <diffuse>0.8 0.8 0.8 1</diffuse>
+        <specular>0.8 0.8 0.8 1</specular>
+        </material>
+    </visual>
+    </link>
+</model>
+
+<!-- Model to apply velocity to -->
+<model name='TestCube'>
+  <pose>0 0 0.5 0 0 0</pose>
+  <link name='link'>
+    <inertial>
+      <mass>1.0</mass>
+      <inertia>
+        <ixx>0.166667</ixx>
+        <iyy>0.166667</iyy>
+        <izz>0.166667</izz>
+      </inertia>
+    </inertial>
+    <visual name='visual'>
+      <geometry><box><size>1 1 1</size></box></geometry>
+      <material><ambient>0.8 0.1 0.1 1</ambient></material>
+    </visual>
+    <collision name='collision'>
+      <geometry><box><size>1 1 1</size></box></geometry>
+    </collision>
+  </link>
+  <!-- Make it dynamic (optional, but good practice if not using inertia) -->
+  <allow_auto_disable>false</allow_auto_disable>
+</model>
+
+
+</world>
+</sdf>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>tutorial_gazebo_plugins</name>
+  <version>0.0.1</version>
+  <description>
+    Gazebo Sim system plugin that moves a model based on a gz-transport topic.
+  </description>
+
+  <maintainer email="you@example.com">Your Name</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- Build system -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Gazebo (Ignition / Gazebo Sim) libraries -->
+  <build_depend>gz-sim9</build_depend>
+  <build_depend>gz-plugin3</build_depend>
+  <build_depend>gz-transport13</build_depend>
+
+  <exec_depend>gz-sim9</exec_depend>
+  <exec_depend>gz-plugin3</exec_depend>
+  <exec_depend>gz-transport13</exec_depend>
+  <exec_depend>ros_gz_sim</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+    <!-- Optional: still export plugin_path via ros_gz_sim if your version supports it -->
+    <gazebo_ros plugin_path="${prefix}/plugins"/>
+  </export>
+</package>
