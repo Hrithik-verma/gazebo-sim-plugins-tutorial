@@ -34,6 +34,7 @@ gazebo-sim-plugins-tutorial/
 1) standalone_gz_sim_plugins/ <br>
    Standalone Gazebo Sim system plugins (CMake build)
 <br>
+
 2) ros2_ws/<br>
    ROS 2 workspace containing Gazebo Sim ROS 2 plugins + launch files
 
@@ -194,8 +195,8 @@ ROS 2 packages not found:
 
 
 ## Author / Maintainer
-Hrithik Verma
-GitHub: https://github.com/Hrithik-verma
-LinkdIn: https://www.linkedin.com/in/hrithik-verma-35a155193
-Youtube: https://www.youtube.com/@RoboticsWithHrithik
+Hrithik Verma <br>
+GitHub: https://github.com/Hrithik-verma <br>
+LinkdIn: https://www.linkedin.com/in/hrithik-verma-35a155193 <br>
+Youtube: https://www.youtube.com/@RoboticsWithHrithik <br>
 
