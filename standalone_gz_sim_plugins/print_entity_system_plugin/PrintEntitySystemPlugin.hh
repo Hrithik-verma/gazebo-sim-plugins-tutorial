@@ -18,7 +18,6 @@ namespace systems
     // This class is a system.
     public gz::sim::System,
     public gz::sim::ISystemConfigure,
-    // This class also implements the ISystemPreUpdate interface.
     public gz::sim::ISystemPreUpdate
   {
    public:

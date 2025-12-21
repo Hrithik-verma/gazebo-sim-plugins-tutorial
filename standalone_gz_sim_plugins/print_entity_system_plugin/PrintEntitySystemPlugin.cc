@@ -7,9 +7,12 @@ using namespace gz;
 using namespace sim;
 using namespace systems;
 
-PrintEntitySystemPlugin::PrintEntitySystemPlugin() = default;
-PrintEntitySystemPlugin::~PrintEntitySystemPlugin() = default;
-
+PrintEntitySystemPlugin::PrintEntitySystemPlugin(){
+  std::cout<<"PrintEntitySystemPlugin Plugin Started!!"<<std::endl;
+}
+PrintEntitySystemPlugin::~PrintEntitySystemPlugin(){
+  std::cout<<"PrintEntitySystemPlugin Plugin stopped!!"<<std::endl;
+}
 void PrintEntitySystemPlugin::Configure(const Entity &_entity,
     const std::shared_ptr<const sdf::Element> &_sdf,
     EntityComponentManager &_ecm,

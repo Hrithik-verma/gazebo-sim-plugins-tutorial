@@ -5,8 +5,12 @@ using namespace gz;
 using namespace sim;
 using namespace systems;
 
-MoveModelTopicWay::MoveModelTopicWay() = default;
-MoveModelTopicWay::~MoveModelTopicWay() = default;
+MoveModelTopicWay::MoveModelTopicWay(){
+  std::cout<<"MoveModelTopicWay Plugin Started!!"<<std::endl;
+}
+MoveModelTopicWay::~MoveModelTopicWay(){
+  std::cout<<"MoveModelTopicWay Plugin Stopped!!"<<std::endl;
+}
 
 void MoveModelTopicWay::Configure(const Entity &_entity,
     const std::shared_ptr<const sdf::Element> &_sdf,

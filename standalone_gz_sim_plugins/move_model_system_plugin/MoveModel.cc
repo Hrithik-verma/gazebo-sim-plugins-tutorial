@@ -5,8 +5,12 @@ using namespace gz;
 using namespace sim;
 using namespace systems;
 
-MoveModel::MoveModel() = default;
-MoveModel::~MoveModel() = default;
+MoveModel::MoveModel(){
+  std::cout<<"MoveModel Plugin Started!!"<<std::endl;
+}
+MoveModel::~MoveModel(){
+  std::cout<<"MoveModel Plugin Stopped!!"<<std::endl;
+}
 
 void MoveModel::Configure(const Entity &_entity,
     const std::shared_ptr<const sdf::Element> &_sdf,
