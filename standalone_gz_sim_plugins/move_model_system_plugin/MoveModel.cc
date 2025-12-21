@@ -44,7 +44,8 @@ void MoveModel::PreUpdate(const UpdateInfo &_info,
   if (_info.paused)
     return;
 
-  // 1. Find the target model entity by name (if not found yet)
+  
+  //1.Find the target model entity by name (if not found yet)
   if (this->targetEntity == kNullEntity)
   {
     auto entityOpt = _ecm.EntityByName(this->modelName);
@@ -59,30 +60,48 @@ void MoveModel::PreUpdate(const UpdateInfo &_info,
     gzmsg << "Found target model entity: " << this->targetEntity << std::endl;
   }
 
-  // 2. Get / create LinearVelocity component
-//   auto velComp =
-//       _ecm.Component<components::LinearVelocityCmd>(this->targetEntity);
+  //method 1
+  // 2.Get / create LinearVelocity component
+  auto velComp =
+      _ecm.Component<components::LinearVelocityCmd>(this->targetEntity);
 
-//   if (!velComp)
-//   {
-//     velComp = _ecm.CreateComponent(this->targetEntity,
-//                                    components::LinearVelocityCmd());
-//     gzmsg << "Added LinearVelocity component to model: "
-//           << this->modelName << std::endl;
-//   }
+  if (!velComp)
+  {
+    velComp = _ecm.CreateComponent(this->targetEntity,
+                                   components::LinearVelocityCmd());
+    // gzmsg << "Added LinearVelocity component to model: "
+    //       << this->modelName << std::endl;
+  }
 
-//   if (!velComp)
-//   {
-//     gzerr << "Failed to create/get LinearVelocity component for model ["
-//           << this->modelName << "]." << std::endl;
-//     return;
-//   }
+  if (!velComp)
+  {
+    gzerr << "Failed to create/get LinearVelocity component for model ["
+          << this->modelName << "]." << std::endl;
+    return;
+  }
 
-//   // 3. Set the Z-axis linear velocity: (0, 0, zVelocity)
+  // 3.Set the Z-axis linear velocity: (0, 0, zVelocity)
   const gz::math::Vector3d vel(0.0, 0.0, this->zVelocity);
-//   velComp->Data() = vel;
+  velComp->Data() = vel;
 
-    _ecm.SetComponentData<components::LinearVelocityCmd>(this->targetEntity,{vel});
+                  /// or
+                  
+  // method 2
+  //instate of step 2 & 3 directly run     
+  // const gz::math::Vector3d vel(0.0, 0.0, this->zVelocity);     
+  // _ecm.SetComponentData<components::LinearVelocityCmd>(this->targetEntity,{vel});
+
+
+
+
+
+
+  // another method of using Model class a rapper around ecs
+  // gz::sim::Model model(this->targetEntity);
+  // model.SetLinearVel(vel) ❌ no such function exits so can't use it  \
+  https://gazebosim.org/api/sim/9/classgz_1_1sim_1_1Model.html#a6ef1a8bed2d5fcc912ac23116c73ec76
+  // https://gazebosim.org/api/sim/9/migrationmodelapi.html Yet in TO DO we do not need it even if you understand EntityComponentManager
+
 }
 
 // Register the plugin with Gazebo Sim
