@@ -4,7 +4,6 @@
 //! [header]
 #include <gz/sim/System.hh>  // to inherit system
 #include "gz/sim/Model.hh"  // for Model component
-#include "gz/sim/components/LinearVelocity.hh" // for linear velocity 
 #include "gz/sim/components/LinearVelocityCmd.hh" // for LinearVelocityCmd component
 #include "gz/sim/components/Name.hh"  // for Name component
 #include <gz/plugin/Register.hh> //for GZ_ADD_PLUGIN_ALIAS()
