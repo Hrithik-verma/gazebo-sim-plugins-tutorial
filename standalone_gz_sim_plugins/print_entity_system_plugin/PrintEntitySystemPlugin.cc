@@ -1,8 +1,5 @@
 
-#include "gz/sim/Util.hh"
-#include "gz/sim/components/Name.hh"
-#include <gz/sim/System.hh>
-#include <gz/plugin/Register.hh> //for GZ_ADD_PLUGIN_ALIAS()
+
 #include "PrintEntitySystemPlugin.hh"
 
 

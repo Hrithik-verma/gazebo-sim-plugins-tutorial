@@ -1,15 +1,5 @@
 #include "tutorial_gazebo_plugins/MoveModelTopicWay.hh"
 
-#include "gz/sim/Model.hh"
-#include "gz/sim/Util.hh"
-#include "gz/sim/components/LinearVelocity.hh"
-#include "gz/sim/components/LinearVelocityCmd.hh"
-#include "gz/sim/components/Name.hh"
-#include <gz/sim/System.hh>
-#include <gz/plugin/Register.hh> //for GZ_ADD_PLUGIN_ALIAS()
-#include <gz/msgs/Utility.hh>    //for msg
-
-
 
 using namespace gz;
 using namespace sim;

@@ -1,11 +1,7 @@
 #ifndef SYSTEM_PLUGIN_MODEL_HH_
 #define SYSTEM_PLUGIN_MODEL_HH_
 
-//! [header]
-#include <gz/sim/System.hh>
-#include <gz/transport/Node.hh> //for gz transport node
-#include <gz/math/Vector3.hh>
-#include <gz/msgs/double.pb.h> // New: Include the Double message type
+
 
 namespace gz
 {

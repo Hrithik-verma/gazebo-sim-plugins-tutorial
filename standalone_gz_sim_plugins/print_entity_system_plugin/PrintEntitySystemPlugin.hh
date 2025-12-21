@@ -2,10 +2,9 @@
 #define WORLD_PLUGIN_HH
 
 //! [header]
-#include <gz/sim/System.hh>
-#include <gz/transport/Node.hh> //for gz transport node
-#include <gz/math/Vector3.hh>
-#include <gz/msgs/double.pb.h> // New: Include the Double message type
+#include <gz/sim/System.hh>   //to inherit system
+#include "gz/sim/components/Name.hh" // for name component
+#include <gz/plugin/Register.hh> //for GZ_ADD_PLUGIN_ALIAS()
 
 namespace gz
 {

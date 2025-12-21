@@ -2,10 +2,17 @@
 #define SYSTEM_PLUGIN_MODEL_HH_
 
 //! [header]
-#include <gz/sim/System.hh>
+#include <gz/sim/System.hh> // to inherit system
+#include "gz/sim/Model.hh"  // for Model component
+#include "gz/sim/components/LinearVelocity.hh" // for linear velocity 
+#include "gz/sim/components/LinearVelocityCmd.hh" // for LinearVelocityCmd component
+#include "gz/sim/components/Name.hh"  // for Name component
+#include <gz/plugin/Register.hh> //for GZ_ADD_PLUGIN_ALIAS()
+#include <gz/msgs/Utility.hh>    //for msg
+
 #include <gz/transport/Node.hh> //for gz transport node
 #include <gz/math/Vector3.hh>
-#include <gz/msgs/double.pb.h> // New: Include the Double message type
+#include <gz/msgs/double.pb.h> // Include the Double message type
 
 namespace gz
 {
