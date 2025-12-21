@@ -19,6 +19,8 @@ void PrintEntitySystemPlugin::Configure(const Entity &_entity,
     EventManager &/*_eventMgr*/)
 {
   this->targetEntity = _entity;
+
+  // means find the value of the ***Name Component** attached to **targetEntity** 
   auto Name = _ecm.Component<components::Name>(this->targetEntity);
   this->modelName = Name->Data();
 

@@ -53,7 +53,6 @@
     </link>
 </model>
 
-<!-- Model to apply velocity to -->
 <model name='TestCube'>
   <pose>0 0 0.5 0 0 0</pose>
   <link name='link'>
