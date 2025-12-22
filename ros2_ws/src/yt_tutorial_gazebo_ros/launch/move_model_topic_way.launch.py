@@ -45,7 +45,7 @@ def generate_launch_description():
     #     name='z_velocity_bridge',
     #     output='screen',
     #     arguments=[
-    #         '/model/test_cube/cmd_vel_z@/cmd_vel_z@gz.msgs.Double@std_msgs/msg/Float64'
+    #         '/cmd_vel_z@std_msgs/msg/Float64@gz.msgs.Double['
     #     ],
     # )
 
