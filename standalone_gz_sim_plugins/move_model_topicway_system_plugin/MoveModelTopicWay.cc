@@ -77,30 +77,37 @@ void MoveModelTopicWay::Update(const UpdateInfo &_info,
     gzmsg << "Found target model entity: " << this->targetEntity << std::endl;
   }
 
-  // 2. Get / create LinearVelocity component
-//   auto velComp =
-//       _ecm.Component<components::LinearVelocityCmd>(this->targetEntity);
+  //method 1
+  // 2.Get / create LinearVelocity component
+  // auto velComp =
+  //     _ecm.Component<components::LinearVelocityCmd>(this->targetEntity);
 
-//   if (!velComp)
-//   {
-//     velComp = _ecm.CreateComponent(this->targetEntity,
-//                                    components::LinearVelocityCmd());
-//     gzmsg << "Added LinearVelocity component to model: "
-//           << this->modelName << std::endl;
-//   }
+  // if (!velComp)
+  // {
+  //   velComp = _ecm.CreateComponent(this->targetEntity,
+  //                                  components::LinearVelocityCmd());
+  //   gzmsg << "Added LinearVelocity component to model: "
+  //         << this->modelName << std::endl;
+  // }
 
-//   if (!velComp)
-//   {
-//     gzerr << "Failed to create/get LinearVelocity component for model ["
-//           << this->modelName << "]." << std::endl;
-//     return;
-//   }
+  // if (!velComp)
+  // {
+  //   gzerr << "Failed to create/get LinearVelocity component for model ["
+  //         << this->modelName << "]." << std::endl;
+  //   return;
+  // }
 
-//   // 3. Set the Z-axis linear velocity: (0, 0, zVelocity)
-  const gz::math::Vector3d vel(0.0, 0.0, this->zVelocity);
-//   velComp->Data() = vel;
+  // // 3.Set the Z-axis linear velocity: (0, 0, zVelocity)
+  // const gz::math::Vector3d vel(0.0, 0.0, this->zVelocity);
+  // velComp->Data() = vel;
 
-    _ecm.SetComponentData<components::LinearVelocityCmd>(this->targetEntity,{vel});
+                  /// or
+                  
+  // method 2
+  //instate of step 2 & 3 directly run     
+  const gz::math::Vector3d vel(0.0, 0.0, this->zVelocity);     
+  _ecm.SetComponentData<components::LinearVelocityCmd>(this->targetEntity,{vel});
+
 }
 
 // Register the plugin with Gazebo Sim

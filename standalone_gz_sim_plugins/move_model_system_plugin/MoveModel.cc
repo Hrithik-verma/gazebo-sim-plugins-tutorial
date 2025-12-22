@@ -62,34 +62,34 @@ void MoveModel::PreUpdate(const UpdateInfo &_info,
 
   //method 1
   // 2.Get / create LinearVelocity component
-  auto velComp =
-      _ecm.Component<components::LinearVelocityCmd>(this->targetEntity);
+  // auto velComp =
+  //     _ecm.Component<components::LinearVelocityCmd>(this->targetEntity);
 
-  if (!velComp)
-  {
-    velComp = _ecm.CreateComponent(this->targetEntity,
-                                   components::LinearVelocityCmd());
-    // gzmsg << "Added LinearVelocity component to model: "
-    //       << this->modelName << std::endl;
-  }
+  // if (!velComp)
+  // {
+  //   velComp = _ecm.CreateComponent(this->targetEntity,
+  //                                  components::LinearVelocityCmd());
+  //   gzmsg << "Added LinearVelocity component to model: "
+  //         << this->modelName << std::endl;
+  // }
 
-  if (!velComp)
-  {
-    gzerr << "Failed to create/get LinearVelocity component for model ["
-          << this->modelName << "]." << std::endl;
-    return;
-  }
+  // if (!velComp)
+  // {
+  //   gzerr << "Failed to create/get LinearVelocity component for model ["
+  //         << this->modelName << "]." << std::endl;
+  //   return;
+  // }
 
-  // 3.Set the Z-axis linear velocity: (0, 0, zVelocity)
-  const gz::math::Vector3d vel(0.0, 0.0, this->zVelocity);
-  velComp->Data() = vel;
+  // // 3.Set the Z-axis linear velocity: (0, 0, zVelocity)
+  // const gz::math::Vector3d vel(0.0, 0.0, this->zVelocity);
+  // velComp->Data() = vel;
 
                   /// or
                   
   // method 2
   //instate of step 2 & 3 directly run     
-  // const gz::math::Vector3d vel(0.0, 0.0, this->zVelocity);     
-  // _ecm.SetComponentData<components::LinearVelocityCmd>(this->targetEntity,{vel});
+  const gz::math::Vector3d vel(0.0, 0.0, this->zVelocity);     
+  _ecm.SetComponentData<components::LinearVelocityCmd>(this->targetEntity,{vel});
 
 
 
