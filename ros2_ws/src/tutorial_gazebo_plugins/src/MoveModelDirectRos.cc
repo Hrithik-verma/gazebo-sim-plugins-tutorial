@@ -15,8 +15,14 @@ using namespace gz;
 using namespace sim;
 using namespace systems;
 
-MoveModelDirectRos::MoveModelDirectRos() = default;
-MoveModelDirectRos::~MoveModelDirectRos() = default;
+MoveModelDirectRos::MoveModelDirectRos(){
+  std::cout<<"MoveModelDirectRos Plugin Started!!"<<std::endl;
+
+}
+MoveModelDirectRos::~MoveModelDirectRos() {
+  std::cout<<"MoveModelDirectRos Plugin Stopped!!"<<std::endl;
+
+}
 
 void MoveModelDirectRos::Configure(const Entity &_entity,
     const std::shared_ptr<const sdf::Element> &_sdf,
