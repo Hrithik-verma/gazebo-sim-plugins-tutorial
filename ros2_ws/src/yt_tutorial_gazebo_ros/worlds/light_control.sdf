@@ -18,6 +18,7 @@
         name="gz::sim::systems::SceneBroadcaster">
 </plugin>
 
+<!-- custom plugin to make disco light effect-->
 <plugin
     filename="LightControl"
     name="gz::sim::LightControl">
@@ -55,10 +56,10 @@
 
 
 
-<scene>
+<!-- <scene>
   <ambient>0.05 0.05 0.05 1</ambient>
   <background>0 0 0 1</background>
-</scene>
+</scene> -->
 
  <!-- lights-->
  <light name='spotlight' type='spot'>

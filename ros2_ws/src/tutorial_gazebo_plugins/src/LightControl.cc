@@ -22,6 +22,8 @@ void LightControl::FindLightEntities(EntityComponentManager &_ecm)
 {
   this->lightEntites.clear();
 
+
+  //check for such components which has Light, Name components
   _ecm.Each<components::Light, components::Name>(
       [&](const Entity &_entity,
           const components::Light *,
@@ -34,7 +36,7 @@ void LightControl::FindLightEntities(EntityComponentManager &_ecm)
       });
 }
 
-// ---------------------------------------------------------------------
+// // ---------------------------------------------------------------------
 void LightControl::PreUpdate(const UpdateInfo &_info,
                              EntityComponentManager &_ecm)
 {
@@ -89,9 +91,6 @@ void LightControl::PreUpdate(const UpdateInfo &_info,
     //convert sdf light msg to gz light msg
     gz::msgs::Light msg = gz::sim::convert<gz::msgs::Light>(sdfLight);
 
-
-
-
     //using Set() to set the fields of light msg
     gz::msgs::Set(msg.mutable_diffuse(),  newColor);
     gz::msgs::Set(msg.mutable_specular(), newColor);
@@ -111,13 +110,30 @@ void LightControl::PreUpdate(const UpdateInfo &_info,
     //method2
     _ecm.SetComponentData<components::LightCmd>(e,msg);
 
+
+    ///method 3 doesnot work as expected why?
+    // auto lightObj = Light(e);
+    // lightObj.SetSpecularColor(_ecm, newColor);
+    // lightObj.SetDiffuseColor(_ecm, newColor); 
+      
+
+    /*
+      https://github.com/gazebosim/gz-sim/blob/gz-sim10/src/Light.cc check actual code 
+      the problem is here it created a entire new msg means new light 
+      because of which we can change our lights certain color property rather end up making new light
+    
+    */
+
     // in case of light we need to trigger update so that rendering system knows it updated
     _ecm.SetChanged(e,
                     components::LightCmd::typeId,
                     ComponentState::PeriodicChange);
-                    /// PeriodicChange ->changing periodically,ok to drop few samples
+                    // PeriodicChange ->changing periodically,ok to drop few samples
   }
 }
+
+
+
 
 // Register the plugin
 GZ_ADD_PLUGIN(
