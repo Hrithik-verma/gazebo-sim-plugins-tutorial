@@ -49,23 +49,50 @@ void LightControl::PreUpdate(const UpdateInfo &_info,
   if (this->lightEntites.empty())
     return;
 
+  //Un comment to see the flicker effect
+  // Flicker (no RNG): irregular brightness 0.15..1.0
+  // constexpr double kTwoPi = 6.283185307179586;
+  // const double t = this->time;
+
+  // double flicker = 0.55
+  //   + 0.25 * std::sin(kTwoPi * 17.0 * t)
+  //   + 0.15 * std::sin(kTwoPi * 23.0 * t + 1.7)
+  //   + 0.10 * std::sin(kTwoPi * 31.0 * t + 0.3);
+
+
+  // flicker = std::clamp(flicker, 0.15, 1.0);
+
+  // // // Animated RGB in [0,1]
+  // const double r = 0.5 * (1.0 + std::sin(this->time * 0.5)) * flicker;
+  // const double g = 0.5 * (1.0 + std::sin(this->time * 0.5 + 2.0)) * flicker;
+  // const double b = 0.5 * (1.0 + std::sin(this->time * 0.5 + 4.0)) * flicker;
+  // gz::math::Color newColor(r, g, b, 1.0);
+
   // Animated RGB in [0,1]
   const double r = 0.5 * (1.0 + std::sin(this->time * 0.5));
   const double g = 0.5 * (1.0 + std::sin(this->time * 0.5 + 2.0));
   const double b = 0.5 * (1.0 + std::sin(this->time * 0.5 + 4.0));
   gz::math::Color newColor(r, g, b, 1.0);
 
+
+ 
   for (const Entity e : this->lightEntites)
   {
+
+    //read data of Light
     auto lightComp = _ecm.Component<components::Light>(e);
     if (!lightComp)
       continue;
 
     const sdf::v14::Light &sdfLight = lightComp->Data();
 
+    //convert sdf light msg to gz light msg
     gz::msgs::Light msg = gz::sim::convert<gz::msgs::Light>(sdfLight);
 
 
+
+
+    //using Set() to set the fields of light msg
     gz::msgs::Set(msg.mutable_diffuse(),  newColor);
     gz::msgs::Set(msg.mutable_specular(), newColor);
 
