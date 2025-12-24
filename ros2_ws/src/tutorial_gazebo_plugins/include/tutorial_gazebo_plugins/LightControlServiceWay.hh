@@ -17,11 +17,11 @@ namespace gz
 {
 namespace sim
 {
-class LightControlTopicWay : public System, public ISystemPreUpdate, public ISystemConfigure
+class LightControlServiceWay : public System, public ISystemPreUpdate, public ISystemConfigure
 {
 public:
   // Constructor
-  LightControlTopicWay() = default;
+  LightControlServiceWay() = default;
 
   void Configure(const Entity &_entity,
                    const std::shared_ptr<const sdf::Element> &_sdf,

@@ -1,4 +1,4 @@
-#include "tutorial_gazebo_plugins/LightControlTopicWay.hh"
+#include "tutorial_gazebo_plugins/LightControlServiceWay.hh"
 
 #include <chrono>
 #include <cmath>
@@ -26,14 +26,14 @@ using namespace gz;
 using namespace gz::sim;
 
 //////////////////////////////////////////////////
-void LightControlTopicWay::Configure(const Entity &/*_entity*/,
+void LightControlServiceWay::Configure(const Entity &/*_entity*/,
     const std::shared_ptr<const sdf::Element> &_sdf,
     EntityComponentManager &/*_ecm*/,
     EventManager &/*_eventMgr*/)
 {
   if (!_sdf || !_sdf->HasElement("on_off_service_name"))
   {
-    gzerr << "LightControlTopicWay plugin requires <on_off_service_name>."
+    gzerr << "LightControlServiceWay plugin requires <on_off_service_name>."
           << std::endl;
     return;
   }
@@ -49,7 +49,7 @@ void LightControlTopicWay::Configure(const Entity &/*_entity*/,
   // Advertise service: Empty -> Empty, callback returns bool
   bool ok = this->node.Advertise(
       this->serviceName,
-      &LightControlTopicWay::srvLightToggle,
+      &LightControlServiceWay::srvLightToggle,
       this);
 
   if (!ok)
@@ -58,29 +58,29 @@ void LightControlTopicWay::Configure(const Entity &/*_entity*/,
               << std::endl;
   }
   
-   gzmsg << "[LightControlTopicWay] Service Name: "
+   gzmsg << "[LightControlServiceWay] Service Name: "
         << this->serviceName << std::endl;
 
 
 }
 
 //////////////////////////////////////////////////
-bool LightControlTopicWay::srvLightToggle(
+bool LightControlServiceWay::srvLightToggle(
     const gz::msgs::Empty &/*_req*/, gz::msgs::Empty &/*_rep*/)
 {
   // Flip state and mark that we must push a single command if turning OFF
   this->isLightOn = !this->isLightOn;
   this->pendingApply = true;
 
-  gzmsg << "[LightControlTopicWay] Toggled. isLightOn = " << std::boolalpha << this->isLightOn << std::endl;
+  gzmsg << "[LightControlServiceWay] Toggled. isLightOn = " << std::boolalpha << this->isLightOn << std::endl;
 
-  std::cerr << "[LightControlTopicWay] Toggled. isLightOn = "
+  std::cerr << "[LightControlServiceWay] Toggled. isLightOn = "
         << std::boolalpha << this->isLightOn << std::endl;
   return true;
 }
 
 //////////////////////////////////////////////////
-void LightControlTopicWay::FindLightEntities(EntityComponentManager &_ecm)
+void LightControlServiceWay::FindLightEntities(EntityComponentManager &_ecm)
 {
   this->lightEntities.clear();
   _ecm.Each<components::Light>(
@@ -92,7 +92,7 @@ void LightControlTopicWay::FindLightEntities(EntityComponentManager &_ecm)
 }
 
 //////////////////////////////////////////////////
-void LightControlTopicWay::PreUpdate(const UpdateInfo &_info,
+void LightControlServiceWay::PreUpdate(const UpdateInfo &_info,
                                      EntityComponentManager &_ecm)
 {
   if (_info.paused)
@@ -160,10 +160,10 @@ void LightControlTopicWay::PreUpdate(const UpdateInfo &_info,
 
 // --- Plugin registration ---
 GZ_ADD_PLUGIN(
-  gz::sim::LightControlTopicWay,
+  gz::sim::LightControlServiceWay,
   gz::sim::System,
-  gz::sim::LightControlTopicWay::ISystemConfigure,
-  gz::sim::LightControlTopicWay::ISystemPreUpdate)
+  gz::sim::LightControlServiceWay::ISystemConfigure,
+  gz::sim::LightControlServiceWay::ISystemPreUpdate)
 
-GZ_ADD_PLUGIN_ALIAS(gz::sim::LightControlTopicWay,
-                    "gz::sim::LightControlTopicWay")
+GZ_ADD_PLUGIN_ALIAS(gz::sim::LightControlServiceWay,
+                    "gz::sim::LightControlServiceWay")

@@ -56,10 +56,10 @@
 
 
 
-<!-- <scene>
+<scene>
   <ambient>0.05 0.05 0.05 1</ambient>
   <background>0 0 0 1</background>
-</scene> -->
+</scene>
 
  <!-- lights-->
  <light name='spotlight' type='spot'>
@@ -76,8 +76,8 @@
     <quadratic>0.0099999997764825821</quadratic>
     </attenuation>
     <spot>
-    <inner_angle>0.10000000149011612</inner_angle> <!-- 0.1, 0.4-->
-    <outer_angle>0.5</outer_angle>  <!-- 0.5, 2.0-->
+    <inner_angle>0.4000000149011612</inner_angle> <!-- 0.1, 0.4-->
+    <outer_angle>2.0</outer_angle>  <!-- 0.5, 2.0-->
     <falloff>0.80000001192092896</falloff>
     </spot>
 </light>
@@ -96,8 +96,8 @@
     <quadratic>0.0099999997764825821</quadratic>
     </attenuation>
     <spot>
-    <inner_angle>0.10000000149011612</inner_angle> <!-- 0.1, 0.4-->
-    <outer_angle>0.5</outer_angle> <!-- 0.5, 2.0-->
+    <inner_angle>0.40000000149011612</inner_angle> <!-- 0.1, 0.4-->
+    <outer_angle>2.0</outer_angle> <!-- 0.5, 2.0-->
     <falloff>0.80000001192092896</falloff>
     </spot>
 </light>

@@ -81,18 +81,18 @@ target_link_libraries(LightControl
 )
 
 
-## LightControlTopicWay plugin
-add_library(LightControlTopicWay SHARED
-  src/LightControlTopicWay.cc
+## LightControlServiceWay plugin
+add_library(LightControlServiceWay SHARED
+  src/LightControlServiceWay.cc
 )
 
-target_include_directories(LightControlTopicWay
+target_include_directories(LightControlServiceWay
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
 
-target_link_libraries(LightControlTopicWay
+target_link_libraries(LightControlServiceWay
   PUBLIC 
     gz-plugin${GZ_PLUGIN_VER}::gz-plugin${GZ_PLUGIN_VER}
     gz-sim8::gz-sim8
@@ -149,7 +149,7 @@ install(
   MoveModelTopicWay
   MoveModelDirectRos
   LightControl
-  LightControlTopicWay
+  LightControlServiceWay
   LightControlDirectRos
   JointControl
   LIBRARY DESTINATION share/${PROJECT_NAME}/plugins

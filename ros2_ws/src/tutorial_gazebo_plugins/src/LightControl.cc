@@ -53,28 +53,28 @@ void LightControl::PreUpdate(const UpdateInfo &_info,
 
   //Un comment to see the flicker effect
   // Flicker (no RNG): irregular brightness 0.15..1.0
-  // constexpr double kTwoPi = 6.283185307179586;
-  // const double t = this->time;
+  constexpr double kTwoPi = 6.283185307179586;
+  const double t = this->time;
 
-  // double flicker = 0.55
-  //   + 0.25 * std::sin(kTwoPi * 17.0 * t)
-  //   + 0.15 * std::sin(kTwoPi * 23.0 * t + 1.7)
-  //   + 0.10 * std::sin(kTwoPi * 31.0 * t + 0.3);
+  double flicker = 0.55
+    + 0.25 * std::sin(kTwoPi * 17.0 * t)
+    + 0.15 * std::sin(kTwoPi * 23.0 * t + 1.7)
+    + 0.10 * std::sin(kTwoPi * 31.0 * t + 0.3);
 
 
-  // flicker = std::clamp(flicker, 0.15, 1.0);
+  flicker = std::clamp(flicker, 0.15, 1.0);
 
-  // // // Animated RGB in [0,1]
-  // const double r = 0.5 * (1.0 + std::sin(this->time * 0.5)) * flicker;
-  // const double g = 0.5 * (1.0 + std::sin(this->time * 0.5 + 2.0)) * flicker;
-  // const double b = 0.5 * (1.0 + std::sin(this->time * 0.5 + 4.0)) * flicker;
-  // gz::math::Color newColor(r, g, b, 1.0);
+  // // Animated RGB in [0,1]
+  const double r = 0.5 * (1.0 + std::sin(this->time * 0.5)) * flicker;
+  const double g = 0.5 * (1.0 + std::sin(this->time * 0.5 + 2.0)) * flicker;
+  const double b = 0.5 * (1.0 + std::sin(this->time * 0.5 + 4.0)) * flicker;
+  gz::math::Color newColor(r, g, b, 1.0);
 
   // Animated RGB in [0,1]
-  const double r = 0.5 * (1.0 + std::sin(this->time * 0.5));
-  const double g = 0.5 * (1.0 + std::sin(this->time * 0.5 + 2.0));
-  const double b = 0.5 * (1.0 + std::sin(this->time * 0.5 + 4.0));
-  gz::math::Color newColor(r, g, b, 1.0);
+  // const double r = 0.5 * (1.0 + std::sin(this->time * 0.5));
+  // const double g = 0.5 * (1.0 + std::sin(this->time * 0.5 + 2.0));
+  // const double b = 0.5 * (1.0 + std::sin(this->time * 0.5 + 4.0));
+  // gz::math::Color newColor(r, g, b, 1.0);
 
 
  

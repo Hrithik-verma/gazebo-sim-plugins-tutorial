@@ -19,8 +19,8 @@
 </plugin>
 
 <plugin
-    filename="LightControlTopicWay"
-    name="gz::sim::LightControlTopicWay">
+    filename="LightControlServiceWay"
+    name="gz::sim::LightControlServiceWay">
 
     <on_off_service_name>lights_on_srv</on_off_service_name>
 </plugin>
@@ -98,8 +98,8 @@
     <quadratic>0.0099999997764825821</quadratic>
     </attenuation>
     <spot>
-    <inner_angle>0.10000000149011612</inner_angle>
-    <outer_angle>0.5</outer_angle>
+    <inner_angle>0.40000000149011612</inner_angle>
+    <outer_angle>2.0</outer_angle>
     <falloff>0.80000001192092896</falloff>
     </spot>
 </light>
@@ -118,8 +118,8 @@
     <quadratic>0.0099999997764825821</quadratic>
     </attenuation>
     <spot>
-    <inner_angle>0.10000000149011612</inner_angle>
-    <outer_angle>0.5</outer_angle>
+    <inner_angle>0.40000000149011612</inner_angle>
+    <outer_angle>2.0</outer_angle>
     <falloff>0.80000001192092896</falloff>
     </spot>
 </light>
