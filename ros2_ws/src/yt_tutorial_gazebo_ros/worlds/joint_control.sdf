@@ -18,7 +18,6 @@
         name="gz::sim::systems::SceneBroadcaster">
 </plugin>
 
-<!-- <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics" /> -->
 
 
 <!-- Floor Plane -->
@@ -50,169 +49,120 @@
 </model>
 
 
-<model name='t_model'>
-    <pose>0.0 0.0 0.35 0 -0 0</pose>
-    <link name='link_0'>
-      <pose>-0.003466 -0.002423 -0.318528 0 -0 0</pose>
-      <visual name='visual'>
-        <pose>0 0 0 0 -0 0</pose>
-        <geometry>
-          <box>
-            <size>1 1 0.03594</size>
-          </box>
-        </geometry>
-        <material>
-          <lighting>1</lighting>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Grey</name>
-          </script>
-          <emissive>0 0 0 1</emissive>
-        </material>
-        <transparency>0</transparency>
-        <cast_shadows>1</cast_shadows>
-      </visual>
-      <!-- Collision for link_0 -->
-      <collision name='collision'>
-        <pose>0 0 0 0 -0 0</pose>
-        <geometry>
-          <box>
-            <size>1 1 0.03594</size>
-          </box>
-        </geometry>
-      </collision>
-    </link>
-    <link name='link_1'>
-      <pose>-0.00322 0.001434 -0.015883 0 -0 0</pose>
-      <visual name='visual'>
-        <pose>0 0 0 0 -0 0</pose>
-        <geometry>
-          <cylinder>
-            <radius>0.0610422</radius>
-            <length>0.586501</length>
-          </cylinder>
-        </geometry>
-        <material>
-          <lighting>1</lighting>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Grey</name>
-          </script>
-          <emissive>0 0 0 1</emissive>
-        </material>
-        <transparency>0</transparency>
-        <cast_shadows>1</cast_shadows>
-      </visual>
-      <!-- Collision for link_1 -->
-      <collision name='collision'>
-        <pose>0 0 0 0 -0 0</pose>
-        <geometry>
-          <cylinder>
-            <radius>0.0610422</radius>
-            <length>0.586501</length>
-          </cylinder>
-        </geometry>
-      </collision>
-    </link>
-    <link name='link_2'>
-      <inertial>
-        <mass>0.00701193</mass>
-        <inertia>
-          <ixx>0.000238155</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0.000238155</iyy>
-          <iyz>0</iyz>
-          <izz>9.72896e-06</izz>
-        </inertia>
-        <pose>0 0 0 0 -0 0</pose>
-      </inertial>
-      <pose>0.006686 0.000989 0.33441 -1.58563 0 0</pose>
-      <visual name='visual'>
-        <pose>0 0 0 0 -0 0</pose>
-        <geometry>
-          <cylinder>
-            <radius>0.052678</radius>
-            <length>0.631859</length>
-          </cylinder>
-        </geometry>
-        <material>
-          <lighting>1</lighting>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Grey</name>
-          </script>
-          <emissive>0 0 0 1</emissive>
-        </material>
-        <transparency>0</transparency>
-        <cast_shadows>1</cast_shadows>
-      </visual>
-      <!-- Collision for link_2 -->
-      <collision name='collision'>
-        <pose>0 0 0 0 -0 0</pose>
-        <geometry>
-          <cylinder>
-            <radius>0.052678</radius>
-            <length>0.631859</length>
-          </cylinder>
-        </geometry>
-      </collision>
-    </link>
-    <joint name='joint_0' type='fixed'>
-      <parent>link_0</parent>
-      <child>link_1</child>
-      <pose>0 0 0 0 -0 0</pose>
-      <physics>
-        <ode>
-          <limit>
-            <cfm>0</cfm>
-            <erp>0.2</erp>
-          </limit>
-          <suspension>
-            <cfm>0</cfm>
-            <erp>0.2</erp>
-          </suspension>
-        </ode>
-      </physics>
-    </joint>
-    <joint name='joint_1' type='revolute'>
-      <parent>link_1</parent>
-      <child>link_2</child>
-      <pose>0 0 0 0 -0 0</pose>
-      <axis>
-        <xyz>0 -1 0</xyz>
-        <limit>
-          <lower>-1.79769e+308</lower>
-          <upper>1.79769e+308</upper>
-          <effort>-1</effort>
-          <velocity>-1</velocity>
-        </limit>
-        <dynamics>
-          <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
-          <damping>0</damping>
-        </dynamics>
-      </axis>
-      <physics>
-        <ode>
-          <limit>
-            <cfm>0</cfm>
-            <erp>0.2</erp>
-          </limit>
-          <suspension>
-            <cfm>0</cfm>
-            <erp>0.2</erp>
-          </suspension>
-        </ode>
-      </physics>
-    </joint>
-    <static>0</static>
-    <allow_auto_disable>1</allow_auto_disable>
+<model name="mega_t_joint_fixed">
+  <pose>0 0 0 0 0 0</pose>
 
+  <!-- BASE -->
+  <link name="link_base">
+    <pose>0 0 1.0 0 0 0</pose>
+    <visual name="visual">
+      <geometry><box><size>30 30 2.0</size></box></geometry>
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/DarkGrey</name>
+        </script>
+      </material>
+    </visual>
+    <collision name="collision">
+      <geometry><box><size>30 30 2.0</size></box></geometry>
+    </collision>
+  </link>
 
-    <plugin filename="JointControl" name="gz::sim::JointControl">
-      <joint_name>joint_1</joint_name>
-    </plugin>
+  <!-- POST -->
+  <link name="link_post">
+    <pose>0 0 11.0 0 0 0</pose>
+    <visual name="visual">
+      <geometry><cylinder><radius>2.0</radius><length>18.0</length></cylinder></geometry>
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Green</name>
+        </script>
+      </material>
+    </visual>
+    <collision name="collision">
+      <geometry><cylinder><radius>2.0</radius><length>18.0</length></cylinder></geometry>
+    </collision>
+  </link>
+
+  <!-- BAR (link frame placed at the JOINT anchor) -->
+  <link name="link_bar">
+    <!-- Put the link frame exactly at the joint: top of post -->
+    <pose>0 0 20.0 0 0 0</pose>
+
+    <visual name="visual">
+      <!-- Rotate cylinder to lie along +Y; keep it centered at the link frame -->
+      <pose>0 0 0 -1.5708 0 0</pose>
+      <geometry><cylinder><radius>1.5</radius><length>26.0</length></cylinder></geometry>
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Blue</name>
+        </script>
+      </material>
+    </visual>
+
+    <collision name="collision">
+      <pose>0 0 0 -1.5708 0 0</pose>
+      <geometry><cylinder><radius>1.5</radius><length>26.0</length></cylinder></geometry>
+    </collision>
+  </link>
+
+  <!-- JOINTS -->
+  <joint name="joint_0" type="fixed">
+    <parent>link_base</parent>
+    <child>link_post</child>
+    <pose>0 0 -5.0 0 0 0</pose>
+  </joint>
+
+  <joint name="joint_1" type="revolute">
+    <parent>link_post</parent>
+    <child>link_bar</child>
+
+    <!-- Joint anchor at top of post (same as link_bar pose) -->
+    <pose>0 0 0.4 0 0 0</pose>
+
+    <axis>
+      <xyz>0 0 1</xyz>
+      <limit>
+        <lower>-1.79769e+308</lower>
+        <upper>1.79769e+308</upper>
+        <effort>5000</effort>
+        <velocity>1.0</velocity>
+      </limit>
+      <dynamics><damping>10.0</damping></dynamics>
+    </axis>
+  </joint>
+
+  <static>0</static>
+
+  <plugin filename="JointControl" name="gz::sim::JointControl">
+    <joint_name>joint_1</joint_name>
+
+    <!-- posssible mode: 
+          velocity
+          force
+          position
+    -->
+    <mode>velocity</mode>
+    
+    <!-- velocity mode (rad/sec)-->
+    <cmd_vel>1.0</cmd_vel>
+
+    <!-- force mode (Nm)-->
+    <cmd_torque>15.0</cmd_torque>
+
+    <!--position mode (radian)-->
+    <pos_a>0.523599</pos_a> <!-- 30 deg-->
+    <pos_b>2.0944</pos_b> <!-- 120 deg-->
+    <wait_time>6</wait_time>
+    <!-- PD control-->
+    <p_gain>10.0</p_gain>
+    <d_gain>1.0</d_gain>
+    <max_torque>10.0</max_torque>
+    <pos_tolerence>0.1</pos_tolerence>
+  </plugin>
 </model>
 
 </world>

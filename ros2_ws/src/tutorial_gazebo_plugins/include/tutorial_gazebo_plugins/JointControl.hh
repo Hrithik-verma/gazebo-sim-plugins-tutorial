@@ -10,6 +10,14 @@
 #include <vector>
 #include <string>
 
+
+enum class Mode
+{
+  Force,
+  Velocity,
+  Position
+};
+
 namespace gz
 {
 namespace sim
@@ -32,6 +40,22 @@ private:
   // Function to find the light entity by name
   std::string jointName; //joint name
   Entity jointEntity; //joint entity
+
+  Mode mode{Mode::Velocity};
+  // Velocity mode
+  double cmdVelocity{0.0}; // for Velcoity Mode
+  double cmdTorque{0.0}; // for Force Mode
+  // Position mode: oscillate between 2 targets // Position Mode
+  double posA{0.0};
+  double posB{0.0};
+  int waitTime{1}; //time to wait from pos A->B
+  double targetPos{0.0}; // current target pose
+  bool hasInitTime{false}; // for init time
+  double pGain{50.0};  // P 
+  double dGain{1.0};   // D
+  double maxTorque{10.0}; // max torque
+  double pTolerance{0.01}; // position tolerance 
+  std::chrono::steady_clock::duration lastSwitchTime{0}; //last time when switching happended
 
 };
 }  // namespace sim
