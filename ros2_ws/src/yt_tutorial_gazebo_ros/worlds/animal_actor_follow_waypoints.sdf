@@ -55,9 +55,9 @@
       name="gz::sim::AnimalActorFollowWaypoints">
 
       <waypoint>0 0 0 0 0 0</waypoint>
-      <waypoint>0 8 0 0 0 0</waypoint>
-      <waypoint>8 8 0 0 0 1.57</waypoint>
-      <waypoint>0 8 0 0 0 3.14</waypoint>
+      <waypoint>0 2 0 0 0 0</waypoint>
+      <waypoint>2 2 0 0 0 1.57</waypoint>
+      <waypoint>0 2 0 0 0 3.14</waypoint>
       
       <speed>0.1</speed>
       <yaw_offset>0.0</yaw_offset>   
