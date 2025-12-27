@@ -140,7 +140,24 @@ target_link_libraries(JointControl
   PUBLIC 
     gz-plugin${GZ_PLUGIN_VER}::gz-plugin${GZ_PLUGIN_VER}
     gz-sim8::gz-sim8
-    gz-transport13::gz-transport13
+)
+
+
+## AnimalActorFollowWaypoints plugin
+add_library(AnimalActorFollowWaypoints SHARED
+  src/AnimalActorFollowWaypoints.cc
+)
+
+target_include_directories(AnimalActorFollowWaypoints
+  PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+)
+
+target_link_libraries(AnimalActorFollowWaypoints
+  PUBLIC 
+    gz-plugin${GZ_PLUGIN_VER}::gz-plugin${GZ_PLUGIN_VER}
+    gz-sim8::gz-sim8
 )
 
 
@@ -152,6 +169,7 @@ install(
   LightControlServiceWay
   LightControlDirectRos
   JointControl
+  AnimalActorFollowWaypoints
   LIBRARY DESTINATION share/${PROJECT_NAME}/plugins
 )
 

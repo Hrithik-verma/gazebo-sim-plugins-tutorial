@@ -20,6 +20,7 @@ install(
     launch
     worlds
     configs
+    models
   DESTINATION
     share/${PROJECT_NAME}/
 )
