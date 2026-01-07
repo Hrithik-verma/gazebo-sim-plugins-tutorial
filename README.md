@@ -7,9 +7,10 @@ This repository accompanies a YouTube tutorial series on Gazebo Sim plugins.
 
 YouTube Tutorial
 ----------------
-Gazebo Sim Plugin Made Easy !!!
 
-Video link: Coming soon
+[![Gazebo Sim Plugin Made Easy](https://img.youtube.com/vi/mE00kjWPwVw/0.jpg)](https://youtube.com/playlist?list=PLOQhCaBjYnsdGPI8sDskC2roKaCjJ1LTU)
+
+👉 [Gazebo Sim Plugin Made Easy – YouTube Playlist](https://youtube.com/playlist?list=PLOQhCaBjYnsdGPI8sDskC2roKaCjJ1LTU)
 
 
 <br>
